@@ -1,4 +1,4 @@
-# Sikilli — Client & Sales Order Sync with Odoo
+# Client & Sales Order Sync with Odoo
 
 A full-stack application that manages clients and sale orders locally and automatically syncs every action to an Odoo 18 instance via the **XML-RPC API** — no double entry.
 
