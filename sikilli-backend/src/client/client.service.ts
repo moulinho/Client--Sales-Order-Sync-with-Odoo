@@ -40,10 +40,11 @@ export class ClientService {
       });
       client.odooPartnerId = odooPartnerId;
     } catch (err) {
+      const msg = (err as Error).message ?? String(err);
       this.logger.error(
-        `Odoo sync failed for client id=${client.id}: ${(err as Error).message}`,
+        `Odoo sync failed for client id=${client.id}: ${msg}`,
       );
-      odooWarning = 'Odoo sync failed — check server logs for details';
+      odooWarning = `Odoo sync failed: ${msg}`;
     }
 
     return { ...client, odooWarning };
