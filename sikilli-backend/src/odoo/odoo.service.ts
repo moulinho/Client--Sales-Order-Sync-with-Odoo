@@ -36,7 +36,12 @@ export class OdooService {
     method: string,
     params: unknown[],
   ): Promise<unknown> {
-    const client = xmlrpc.createClient({
+    const useSSL = this.port === 443 || this.port === 8443;
+    const clientFactory = useSSL
+      ? xmlrpc.createSecureClient
+      : xmlrpc.createClient;
+
+    const client = clientFactory({
       host: this.host,
       port: this.port,
       path,
