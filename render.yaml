@@ -5,20 +5,18 @@ services:
     name: sikilli-backend
     env: node
     rootDir: sikilli-backend
-    buildCommand: yarn install && npx prisma generate && yarn build
+    buildCommand: yarn install --production=false && npx prisma generate && yarn build
     startCommand: npx prisma migrate deploy && yarn start:prod
     envVars:
       - key: DATABASE_URL
         # Using the Internal Database URL provided from your Render PostgreSQL instance
         value: postgresql://sikilli_user:azLbNQpMKGreSSObOuaEmixm8R2uBG16@dpg-d84tc8ojs32c73a352qg-a/sikilli
-      - key: NODE_ENV
-        value: production
 
   - type: web
     name: sikilli-frontend
     env: node
     rootDir: sikilli-frontend
-    buildCommand: yarn install && yarn build
+    buildCommand: yarn install --production=false && yarn build
     startCommand: yarn start
     envVars:
       - key: API_URL
@@ -26,5 +24,3 @@ services:
           type: web
           name: sikilli-backend
           envVarKey: RENDER_EXTERNAL_URL
-      - key: NODE_ENV
-        value: production
