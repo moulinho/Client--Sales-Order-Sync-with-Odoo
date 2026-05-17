@@ -4,6 +4,7 @@ services:
   - type: web
     name: sikilli-backend
     env: node
+    region: frankfurt
     rootDir: sikilli-backend
     buildCommand: yarn install --production=false && npx prisma generate && yarn build
     startCommand: npx prisma migrate deploy && yarn start:prod
@@ -15,6 +16,7 @@ services:
   - type: web
     name: sikilli-frontend
     env: node
+    region: frankfurt
     rootDir: sikilli-frontend
     buildCommand: yarn install --production=false && yarn build
     startCommand: yarn start
