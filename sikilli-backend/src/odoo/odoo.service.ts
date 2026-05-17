@@ -118,6 +118,7 @@ export class OdooService {
         name: data.name,
         email: data.email,
         phone: data.phone ?? false,
+        is_company: true,
         customer_rank: 1,
       },
     ])) as number;
