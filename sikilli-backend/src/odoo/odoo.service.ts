@@ -114,7 +114,12 @@ export class OdooService {
     phone?: string;
   }): Promise<number> {
     const id = (await this.execute('res.partner', 'create', [
-      { name: data.name, email: data.email, phone: data.phone ?? false },
+      {
+        name: data.name,
+        email: data.email,
+        phone: data.phone ?? false,
+        customer_rank: 1,
+      },
     ])) as number;
     this.logger.log(`Created Odoo partner id=${id}`);
     return id;
