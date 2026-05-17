@@ -10,8 +10,8 @@ services:
     startCommand: npx prisma migrate deploy && yarn start:prod
     envVars:
       - key: DATABASE_URL
-        # Using the External Database URL with SSL so it works from any region
-        value: postgresql://sikilli_user:azLbNQpMKGreSSObOuaEmixm8R2uBG16@dpg-d84tc8ojs32c73a352qg-a.frankfurt-postgres.render.com/sikilli?sslmode=require
+        # New DB instance - External URL with SSL
+        value: postgresql://sikilli_1qg0_user:37G9L4dNZ6yL5sWySBFMlyxxMC9B0Wdp@dpg-d850m5jtqb8s73eekmqg-a.frankfurt-postgres.render.com/sikilli_1qg0?sslmode=require
 
   - type: web
     name: sikilli-frontend
