@@ -70,10 +70,11 @@ export class OrderService {
       });
       order.odooOrderId = odooOrderId;
     } catch (err) {
+      const msg = (err as Error).message ?? String(err);
       this.logger.error(
-        `Odoo sync failed for order id=${order.id}: ${(err as Error).message}`,
+        `Odoo sync failed for order id=${order.id}: ${msg}`,
       );
-      odooWarning = 'Odoo sync failed — check server logs for details';
+      odooWarning = `Odoo sync failed: ${msg}`;
     }
 
     return { ...order, odooWarning };
@@ -119,10 +120,11 @@ export class OrderService {
         updated.odooOrderId = odooOrderId;
       }
     } catch (err) {
+      const msg = (err as Error).message ?? String(err);
       this.logger.error(
-        `Odoo sync failed for order id=${id}: ${(err as Error).message}`,
+        `Odoo sync failed for order id=${id}: ${msg}`,
       );
-      odooWarning = 'Odoo sync failed — check server logs for details';
+      odooWarning = `Odoo sync failed: ${msg}`;
     }
 
     return { ...updated, odooWarning };
@@ -169,10 +171,11 @@ export class OrderService {
       });
       order.odooOrderId = odooOrderId;
     } catch (err) {
+      const msg = (err as Error).message ?? String(err);
       this.logger.error(
-        `Odoo retry sync failed for order id=${id}: ${(err as Error).message}`,
+        `Odoo retry sync failed for order id=${id}: ${msg}`,
       );
-      odooWarning = 'Odoo sync failed — check server logs for details';
+      odooWarning = `Odoo sync failed: ${msg}`;
     }
 
     return { ...order, odooWarning };
