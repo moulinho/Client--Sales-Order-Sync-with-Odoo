@@ -10,8 +10,8 @@ services:
     startCommand: npx prisma migrate deploy && yarn start:prod
     envVars:
       - key: DATABASE_URL
-        # Using the Internal Database URL provided from your Render PostgreSQL instance
-        value: postgresql://sikilli_user:azLbNQpMKGreSSObOuaEmixm8R2uBG16@dpg-d84tc8ojs32c73a352qg-a/sikilli
+        # Using the External Database URL with SSL so it works from any region
+        value: postgresql://sikilli_user:azLbNQpMKGreSSObOuaEmixm8R2uBG16@dpg-d84tc8ojs32c73a352qg-a.frankfurt-postgres.render.com/sikilli?sslmode=require
 
   - type: web
     name: sikilli-frontend
