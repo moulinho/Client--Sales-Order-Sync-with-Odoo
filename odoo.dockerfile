@@ -1,10 +1,12 @@
 FROM odoo:18
 
-# Copy custom Odoo config (DB settings hardcoded to avoid PORT env var conflict)
+# Copy config and startup script
 COPY odoo.conf /etc/odoo/odoo.conf
+COPY odoo-start.sh /odoo-start.sh
+RUN chmod +x /odoo-start.sh
 
-# Expose Odoo HTTP port
+# Odoo listens on 8069
 EXPOSE 8069
 
-# Initialize base modules on first start, then serve
-CMD ["/usr/bin/odoo", "--config=/etc/odoo/odoo.conf", "--init=base", "--without-demo=all"]
+# Initialize DB then start server
+CMD ["/odoo-start.sh"]

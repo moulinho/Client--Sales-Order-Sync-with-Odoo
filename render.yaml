@@ -7,8 +7,10 @@ services:
     env: docker
     region: frankfurt
     dockerfilePath: odoo.dockerfile
-    # PORT env var is NOT set here — Render defaults to 8069 scan on EXPOSE 8069
     # DB config is hardcoded in odoo.conf to avoid conflicts with Render's PORT var
+    envVars:
+      - key: PORT
+        value: "8069"
 
   # ── NestJS Backend ────────────────────────────────────────────────────────────
   - type: web
