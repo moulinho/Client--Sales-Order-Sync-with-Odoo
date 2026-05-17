@@ -1,15 +1,15 @@
 #!/bin/bash
 set -e
 
-echo "==> Checking if Odoo database needs initialization..."
+echo "==> Initializing Odoo database with base + sales modules..."
 
-# Run init in a separate pass that stops after completion (idempotent)
+# Initialize base and sales management (idempotent — safe to run on every restart)
 /usr/bin/odoo \
   --config=/etc/odoo/odoo.conf \
-  --init=base \
+  --init=base,sale_management,contacts \
   --without-demo=all \
   --stop-after-init \
-  || echo "==> Init step finished (may already be initialized)"
+  || echo "==> Init step completed (modules may already be installed)"
 
 echo "==> Starting Odoo HTTP server on port 8069..."
 exec /usr/bin/odoo --config=/etc/odoo/odoo.conf
