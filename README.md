@@ -70,17 +70,9 @@ npm install
 cp .env.example .env
 ```
 
-The `.env.example` values already match the Docker services — no edits needed if you use the default setup:
+The `.env.example` values already match the Docker services — no edits needed if you use the default setup
 
-```
-DATABASE_URL="postgresql://odoo:odoo@localhost:5432/postgres"
-ODOO_HOST="localhost"
-ODOO_PORT=8069
-ODOO_DB="skilli"
-ODOO_USERNAME="admin"
-ODOO_PASSWORD="admin"
-PORT=3001
-```
+
 
 Run migrations and start the dev server:
 
