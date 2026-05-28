@@ -92,15 +92,7 @@ yarn dev
 Open **http://localhost:3000**.
 
 ---
-
-## Odoo Credentials (for the reviewer)
-
-| Field | Value |
-|---|---|
-| URL | http://localhost:8069 |
-| Database | `skilli` |
-| Login | `admin` |
-| Password | `admin` |
+|
 
 These credentials are set automatically by the Docker Compose configuration — no manual Odoo setup is required.
 
